@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Suivi de conduite accompagnée</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+    	h1 {
+		  font-family: 'Roboto', sans-serif; /* choisir une police de caractères attrayante */
+		  font-size: 2rem; /* ajuster la taille du titre selon vos préférences */
+		  text-align: center; /* centrer le texte */
+		  margin-top: 2rem; /* ajouter un peu d'espace en haut */
+		  color: white;
+		}
+  	</style>
+	<script type="module" src="ExperienceConduite.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+<body>
+	<h1>Application de suivi de conduite accompagnée</h1>
+	<div class="container">
+		<form id="experience-form">
+			<label for="date">Date : </label><input type="date" id="date" name="date" required>
+
+			<label for="distance">Distance (en Km) : </label><input type="number" id="distance" min="0" name="distance" required>
+
+			<label for="typeTrajet">Type de trajet : </label>
+			<select id="typeTrajet" required>
+				<option value="urbain">Urbain</option>
+	      		<option value="routier">Routier</option>
+	      		<option value="autoroute">Autoroute</option>
+	      		<option value="Periphérique">Périphérique</option>
+			</select>
+			
+			<label for="manoeuvres">Manoeuvres : </label><input type="text" id="manoeuvres" name="manoeuvres">
+
+			<label for="meteo">Météo :</label>
+	    	<select id="meteo" required>
+	      		<option value="ensoleille">Ensoleillé</option>
+	      		<option value="nuageux">Nuageux</option>
+	      		<option value="pluvieux">Pluvieux</option>
+	      		<option value="neige">Neige</option>
+	    	</select>
+
+	    	<label for="commentaires">Commentaires :</label>
+	    	<textarea id="commentaires"></textarea>
+	    
+	    	<button type="submit">Enregistrer</button>
+
+
+		</form>
+		<div>
+			<button id="export-csv">Exporter au format CSV</button>
+			<button id="export-json">Exporter au format JSON</button>
+		</div>
+	</div>
+	<table id="experiences-table">
+  		<thead>
+    		<tr>
+      		<th>Date</th>
+      		<th>Distance</th>
+      		<th>Type de trajet</th>
+      		<th>Manœuvres</th>
+      		<th>Météo</th>
+      		<th>Commentaires</th>
+      		<th>Localisation</th>
+    		</tr>
+  		</thead>
+  		<tbody id="experiences-table-body"></tbody>
+	</table>
+	<canvas id="typeTrajetChart" width="400" height="400"></canvas>
+	<p id="totalDistance">Distance totale parcourue: 0 km</p>
+
+
+</body>
+</html>
